@@ -1,0 +1,36 @@
+{
+  "name": "react_assignment",
+  "version": "1.0.0",
+  "description": "React JS training",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build",
+    "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
+    "build:prod": "webpack -p && cp src/index.html dist/index.html && webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashankJ-cuelogic/ReactJS-Assignment.git"
+  },
+  "author": "shashank jaiswal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashankJ-cuelogic/ReactJS-Assignment/issues"
+  },
+  "homepage": "https://github.com/shashankJ-cuelogic/ReactJS-Assignment#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
