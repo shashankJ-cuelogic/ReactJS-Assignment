@@ -1,5 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
+import { Link } from "react-router";
+import { Dashboard } from "./Dashboard"
+import { InputElement } from "./InputElement"
 
 export class Register extends React.Component {
 
@@ -8,48 +11,51 @@ export class Register extends React.Component {
         this.state = {
             useremail: '',
             username: '',
-            password: '',
-            data:null
+            password: ''
+                      
         }
+        this.setUserName = this.setUserName.bind(this);
+
     }
+
 
     setUserName(event) {
         this.setState({
-            username:event.target.value
+            username: event.target.value
         });
     }
 
     setPassword(event) {
         this.setState({
-            password:event.target.value
+            password: event.target.value
         });
     }
 
     setEmail(event) {
         this.setState({
-            useremail:event.target.value
+            useremail: event.target.value
         });
     }
 
-    saveDetails(){
-          this.setState({
-              data:{
-                  userName:this.state.username,
-                  userEmail:this.state.useremail,
-                  password:this.state.password
-            }
-          });
-          console.log(this.state.data);
+    saveDetails() {
+       
     }
 
     render() {
         return (
             <div >
                 <h2 >Register</h2>
-                <input type="text" name="username" placeholder="Name" value={this.state.username} onChange={(event)=>this.setUserName(event)}/>
-                <input type="text" name="useremail" placeholder="Email Address" value={this.state.useremail}  onChange={(event)=>this.setEmail(event)}/>
-                <input type="password" name="password" placeholder="Password" required="" value={this.state.password}  onChange={(event)=>this.setPassword(event)}/>
-                <button type="submit" onClick={()=>this.saveDetails()}>Save</button>
+                <Link to={"/"}>Dashboard</Link><hr />
+                <InputElement inputType={'text'} fieldname={'username'}
+                    placeholder={'User Name'} value={this.state.username} controlFunc={this.setUserName} />
+                <hr />
+                <InputElement inputType={'text'} fieldname={'useremail'}
+                    placeholder={'Email Address'} value={this.state.useremail} controlFunc={(event) => this.setEmail(event)} />
+                <hr />
+                <InputElement inputType={'password'} fieldname={'password'}
+                    placeholder={'Password'} value={this.state.password} controlFunc={(event) => this.setPassword(event)} />
+                <hr />
+                <button type="submit" onClick={() => this.saveDetails()}>Save</button>
             </div>
         );
     }
