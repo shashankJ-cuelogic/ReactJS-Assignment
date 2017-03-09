@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 import { chai, expect } from 'chai';
-import { Profile } from '../src/app/component/Profile';
+import { Profile } from '../../../src/app/containers/Profile';
 
 describe('Component: Profile', function () {
     it('Expected return should have h2', () => {

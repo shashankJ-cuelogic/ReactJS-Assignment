@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
 import { chai, expect } from 'chai';
-import { Login } from '../src/app/component/Login';
+import { Login } from '../../../src/app/containers/Login';
 
 describe('Component: Login', function () {
 

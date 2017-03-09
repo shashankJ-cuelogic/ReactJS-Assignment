@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Link } from "react-router";
 import { Dashboard } from "./Dashboard"
-import { InputElement } from "./InputElement"
+import { InputElement } from "../../app/component/InputElement"
 
 export class Register extends React.Component {
 
