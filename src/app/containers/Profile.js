@@ -1,26 +1,33 @@
 import React from "react";
 import { render } from "react-dom";
+import { connect } from 'react-redux';
 
-export class Profile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: 'Demo',
-            useremail: 'demo@gmail.com'
-        }
-    }
+
+class Profile extends React.Component {
+
     render() {
+        // console.log(this.Profile);
         return (
             <div>
                 <h2>Profile</h2>
-                <p>{this.state.username}</p>
-                <p>{this.state.useremail}</p>
+                <p>{this.props.Profile.username}</p>
+                <p>{this.props.Profile.useremail}</p>
             </div>
         );
     }
 }
 
-Profile.propTypes={
-    username:React.PropTypes.string,
-    useremail:React.PropTypes.string
-}
+Profile.propTypes = {
+    username: React.PropTypes.string,
+    useremail: React.PropTypes.string
+};
+
+const mapStateToProps = (state) => {
+    //console.log(state.reducerProfile.Profile);
+    return {
+        Profile: state.reducerProfile
+    }
+};
+
+
+export default connect(mapStateToProps)(Profile);

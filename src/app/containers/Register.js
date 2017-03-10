@@ -3,39 +3,17 @@ import { render } from "react-dom";
 import { Link } from "react-router";
 import { Dashboard } from "./Dashboard"
 import { InputElement } from "../../app/component/InputElement"
-
-export class Register extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            useremail: '',
-            username: '',
-            password: '',
-            data:''
+import { connect } from 'react-redux';
 
 
-        }
-        this.saveDetails = this.saveDetails.bind(this);
-        this.handleOnchange = this.handleOnchange.bind(this);
-
-    }
+class Register extends React.Component {
 
 
-
-
-    handleOnchange(event) {
-        var field = event.target.name;
-        var change = {};
-        change[field] = event.target.value;
-        console.log(field)
-        this.setState(change);
-    }
 
     saveDetails() {
-        alert('user name:' + this.state.username + ' user pass:' + this.state.password + ' user email' + (this.state.useremail));
+        alert('user name:' + this.props.Register.username + ' user pass:' + this.props.Register.password + ' user email' + (this.props.Register.useremail));
         this.setState({
-            data:this.state.username
+            data: this.props.Register.username
         });
     }
 
@@ -46,13 +24,13 @@ export class Register extends React.Component {
                 <h2 >Register</h2>
                 <Link to={"/"}>Dashboard</Link><hr />
                 <InputElement inputType={'text'} fieldname={'username'}
-                    placeholder={'User Name'} value={this.state.username} controlFunc={this.handleOnchange} />
+                    placeholder={'User Name'} value={this.props.Register.username} controlFunc={this.props.Register.handleOnchangeEvents} />
                 <hr />
                 <InputElement inputType={'text'} fieldname={'useremail'}
-                    placeholder={'Email Address'} value={this.state.useremail} controlFunc={this.handleOnchange} />
+                    placeholder={'Email Address'} value={this.props.Register.useremail} controlFunc={this.props.handleOnchangeEvents} />
                 <hr />
                 <InputElement inputType={'password'} fieldname={'password'}
-                    placeholder={'Password'} value={this.state.password} controlFunc={this.handleOnchange} />
+                    placeholder={'Password'} value={this.props.Register.password} controlFunc={this.props.handleOnchangeEvents} />
                 <hr />
                 <button onClick={this.saveDetails}>Save</button>
 
@@ -67,4 +45,24 @@ Register.propTypes = {
     password: React.PropTypes.string
 
 
-}
+};
+
+const mapStateToProps = (state) => {
+    console.log(state.reducerRegister);
+    return {
+        Register: state.reducerRegister
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    console.log(state.reducerRegister);
+    return {
+        handleOnchangeEvents: (name) => {
+            type: 'HANDLE_ONCLICK_EVENT'
+            payload: name
+        }
+    }
+};
+
+
+export default connect(mapStateToProps)(Register);
