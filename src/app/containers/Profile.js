@@ -6,12 +6,11 @@ import { connect } from 'react-redux';
 class Profile extends React.Component {
 
     render() {
-        // console.log(this.Profile);
+        //console.log(this.props);
         return (
             <div>
                 <h2>Profile</h2>
-                <p>{this.props.Profile.username}</p>
-                <p>{this.props.Profile.useremail}</p>
+                <p>{this.props.Profile.data}</p>
             </div>
         );
     }
@@ -23,9 +22,9 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    //console.log(state.reducerProfile.Profile);
+    //console.log(state.reducerRegister);
     return {
-        Profile: state.reducerProfile
+        Profile: state.reducerRegister
     }
 };
 
