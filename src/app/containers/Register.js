@@ -72,14 +72,14 @@ Register.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    //console.log(state.reducerRegister);
+    console.log(state.reducerRegister);
     return {
         Register: state.reducerRegister
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    console.log(dispatch);
+   // console.log(dispatch);
     return {
         saveDetailsFunction: (data) => {
             dispatch(saveDetailsFunction(data));

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers,applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
 import { Route, Router, browserHistory, Link, IndexRoute } from "react-router";
 import { Root } from "../app/containers/Root";
@@ -8,20 +8,20 @@ import { Dashboard } from "../app/containers/Dashboard";
 import { Login } from "../app/containers/Login";
 import Profile from "../app/containers/Profile";
 import Register from "../app/containers/Register";
-import reducerProfile from "../app/reducers/Profile";
-import reducerRegister from "../app/reducers/Register";
-
-
+import reducerProfile from "../app/reducers/profileReducer";
+import reducerRegister from "../app/reducers/registerReducer";
+import thunk from 'redux-thunk'; 
+import logger from 'redux-logger'; 
 
 
 
 const reducer = combineReducers({
-    reducerProfile, reducerRegister
+     reducerRegister
 
 })
 
 
-let store = createStore(reducer);
+let store = createStore(reducer,applyMiddleware(thunk,logger()));
 
 var routers = (<Router history={browserHistory}>
     <Route path="/" component={Root}>
