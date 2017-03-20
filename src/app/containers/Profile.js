@@ -56,7 +56,7 @@ const mapDispatchToProps = (dispatch) => {
         startImages: () => {
             dispatch({ type: "FETCH_IMAGE_START" });
             dispatch(getImagesData());
-            //dispatch({ type: "FETCH_IMAGE_RECEIVED" });
+           
         }
     };
 }

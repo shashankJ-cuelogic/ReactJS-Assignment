@@ -4,7 +4,7 @@
   "description": "React JS training",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require setup.js --recursive test --compilers js:babel-core/register",
+    "test": "mocha --require setup.js  --compilers js:babel-core/register ",
     "start": "npm run build",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && cp src/index.html dist/index.html && webpack-dev-server"
@@ -21,6 +21,8 @@
   "homepage": "https://github.com/shashankJ-cuelogic/ReactJS-Assignment#readme",
   "dependencies": {
     "css-loader": "^0.27.3",
+    "es6-promise": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.2",
     "react-addons-transition-group": "^15.4.2",
     "react-block-ui": "^0.2.4",

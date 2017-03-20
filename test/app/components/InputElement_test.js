@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 import { chai, expect } from 'chai';
 import { InputElement } from '../../../src/app/component/InputElement';
-import { Register } from '../../../src/app/containers/Register';
+import  Register  from '../../../src/app/containers/Register';
 
 
 describe('Component: InputElement', function () {

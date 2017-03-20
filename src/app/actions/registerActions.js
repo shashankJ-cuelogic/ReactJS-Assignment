@@ -1,5 +1,7 @@
 import { SAVE_DETAILS, FETCH_IMAGE_START, FETCH_IMAGE_ERROR, FETCH_IMAGE_RECEIVED } from './actions'
 import $ from "jquery";
+import fetch from 'isomorphic-fetch';
+
 
 export function saveDetailsFunction(data) {
     // console.log(data);
@@ -13,16 +15,17 @@ export function saveDetailsFunction(data) {
 
 export function getImagesData() {
     return dispatch => {
-        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
-            tags: "apples",
-            tagmode: "any",
-            format: "json"
-        }).done(function (data) {
-            dispatch({
+        return fetch('http://jsonplaceholder.typicode.com/photos/1')
+            .then(res => res.json())
+            .then(json => dispatch({
                 type: FETCH_IMAGE_RECEIVED,
-                payload: data
-
-            });
-        });
+                payload: (json)
+            }))
+            .catch(ex => {
+                console.log('ASAS');
+            })
     }
+
+
+
 }
